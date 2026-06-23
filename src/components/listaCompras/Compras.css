@@ -1,0 +1,18 @@
+.lista-compras {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-compra {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.nome-compra {
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+}
