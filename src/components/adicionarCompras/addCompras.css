@@ -1,0 +1,35 @@
+.botao-adicionar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  padding: 13px 16px;
+  border: 1px dashed rgba(94, 234, 212, 0.38);
+  border-radius: 15px;
+  color: #99f6e4;
+  background: rgba(20, 184, 166, 0.08);
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.botao-adicionar span {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.botao-adicionar:hover {
+  border-color: rgba(94, 234, 212, 0.7);
+  background: rgba(20, 184, 166, 0.14);
+  transform: translateY(-1px);
+}
+
+.botao-adicionar:focus-visible {
+  outline: 3px solid rgba(45, 212, 191, 0.3);
+  outline-offset: 2px;
+}

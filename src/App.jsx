@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Compras from "./components/listaCompras/Compras";
+import AddCompras from "./components/adicionarCompras/AddCompras";
 
 function App() {
   const [compras, setCompras] = useState([
@@ -58,6 +59,17 @@ function App() {
     );
   }
 
+  function adicionarCompras(dados) {
+    setCompras((comprasAtuais) => [
+      ...comprasAtuais,
+      {
+        ...dados,
+        id: crypto.randomUUID(),
+        comprado: false,
+      },
+    ]);
+  }
+
   const totalComprado = compras.filter((compra) => compra.comprado).length;
   const progresso = (totalComprado / compras.length) * 100;
 
@@ -80,7 +92,7 @@ function App() {
         <div className="progress" aria-hidden="true">
           <span style={{ width: `${progresso}%` }} />
         </div>
-
+        <AddCompras onAdicionar={adicionarCompras} />
         <Compras compras={compras} jaComprado={jaComprado} />
       </section>
     </main>
