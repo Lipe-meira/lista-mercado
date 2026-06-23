@@ -70,6 +70,12 @@ function App() {
     ]);
   }
 
+  function deletarCompras(compraId) {
+    setCompras((comprasAtuais) =>
+      comprasAtuais.filter((compra) => compraId !== compra.id),
+    );
+  }
+
   const totalComprado = compras.filter((compra) => compra.comprado).length;
   const progresso = (totalComprado / compras.length) * 100;
 
@@ -93,7 +99,11 @@ function App() {
           <span style={{ width: `${progresso}%` }} />
         </div>
         <AddCompras onAdicionar={adicionarCompras} />
-        <Compras compras={compras} jaComprado={jaComprado} />
+        <Compras
+          compras={compras}
+          jaComprado={jaComprado}
+          deletarCompras={deletarCompras}
+        />
       </section>
     </main>
   );
