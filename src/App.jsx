@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 import Compras from "./components/listaCompras/Compras";
 
 function App() {
@@ -57,15 +58,32 @@ function App() {
     );
   }
 
+  const totalComprado = compras.filter((compra) => compra.comprado).length;
+  const progresso = (totalComprado / compras.length) * 100;
+
   return (
-    <div className="w-full min-h-screen bg-slate-500 flex justify-center p-6">
-      <div className="w-full max-w-[500px] space-y-4">
-        <h1 className="text-3xl text-slate-100 font-bold text-center">
-          Lista de compras
-        </h1>
+    <main className="app-shell">
+      <section className="app-card">
+        <header className="app-header">
+          <div>
+            <p className="app-kicker">Mercado da semana</p>
+            <h1>Lista de compras</h1>
+          </div>
+          <span
+            className="app-counter"
+            aria-label={`${totalComprado} itens comprados`}
+          >
+            {totalComprado}/{compras.length}
+          </span>
+        </header>
+
+        <div className="progress" aria-hidden="true">
+          <span style={{ width: `${progresso}%` }} />
+        </div>
+
         <Compras compras={compras} jaComprado={jaComprado} />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 
