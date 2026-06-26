@@ -17,12 +17,12 @@ function Compras({ compras, jaComprado, deletarCompras }) {
             className={`card-compra ${compra.comprado ? "card-compra--concluida" : ""}`}
           >
             <span className="check-compra" aria-hidden="true">
-              {compra.comprado ? "✓" : ""}
+              {compra.comprado ? "X" : "✓"}
             </span>
 
             <span className="info-compra">
               <strong>{compra.nome}</strong>
-              <small>Quantidade: {compra.quantidade}</small>
+              <small>Qtde: {compra.quantidade}</small>
             </span>
 
             <span className="valor-compra">

@@ -1,53 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Compras from "./components/listaCompras/Compras";
 import AddCompras from "./components/adicionarCompras/AddCompras";
 
 function App() {
-  const [compras, setCompras] = useState([
-    {
-      id: 1,
-      nome: "leite",
-      valor: 2.99,
-      comprado: false,
-      quantidade: 5,
-    },
-    {
-      id: 2,
-      nome: "pão",
-      valor: 5.99,
-      comprado: false,
-      quantidade: 5,
-    },
-    {
-      id: 3,
-      nome: "arroz",
-      valor: 15.99,
-      comprado: false,
-      quantidade: 2,
-    },
-    {
-      id: 4,
-      nome: "feijão",
-      valor: 10.99,
-      comprado: false,
-      quantidade: 1,
-    },
-    {
-      id: 5,
-      nome: "carne",
-      valor: 29.99,
-      quantidade: 5,
-      comprado: false,
-    },
-    {
-      id: 6,
-      nome: "frango",
-      valor: 19.99,
-      quantidade: 5,
-      comprado: false,
-    },
-  ]);
+  const [compras, setCompras] = useState(() => {
+    const savedCompras = localStorage.getItem("compras");
+
+    if (!savedCompras) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(savedCompras);
+    } catch {
+      return [];
+    }
+  });
+
+  // useEffect: executa depois que o componente
+  // renderiza e sempre que tasks mudar
+  useEffect(() => {
+    localStorage.setItem("compras", JSON.stringify(compras));
+  }, [compras]);
 
   function jaComprado(compraId) {
     setCompras((comprasAtuais) =>
